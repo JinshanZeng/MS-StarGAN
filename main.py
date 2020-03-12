@@ -36,7 +36,7 @@ def main(config):
                                  'RaFD', config.mode, config.num_workers)
     
 
-    # Solver for training and testing StarGAN.
+    # Solver for training and testing MS-StarGAN.
     solver = Solver(celeba_loader, rafd_loader, config)
 
     if config.mode == 'train':
@@ -95,14 +95,13 @@ if __name__ == '__main__':
 
     # Directories.
     parser.add_argument('--celeba_image_dir', type=str,
-                        default='/home/chenqi/gurenshufa/data_train/CelebA_nocrop/images')
+                        default='/home/images')
     parser.add_argument('--attr_path', type=str,
-                        default='/home/chenqi/gurenshufa/data_train/list_attr_celeba.txt')
-    parser.add_argument('--rafd_image_dir', type=str, default='data/RaFD/train')
-    parser.add_argument('--log_dir', type=str, default='stargan/logs')
-    parser.add_argument('--model_save_dir', type=str, default='stargan/models')
-    parser.add_argument('--sample_dir', type=str, default='stargan/samples')
-    parser.add_argument('--result_dir', type=str, default='stargan/results')
+                        default='/home/list_attr_celeba.txt')
+    parser.add_argument('--log_dir', type=str, default='MS-Stargan/logs')
+    parser.add_argument('--model_save_dir', type=str, default='MS-Stargan/models')
+    parser.add_argument('--sample_dir', type=str, default='MS-Stargan/samples')
+    parser.add_argument('--result_dir', type=str, default='MS-Stargan/results')
 
     # Step size.
     parser.add_argument('--log_step', type=int, default=10)
