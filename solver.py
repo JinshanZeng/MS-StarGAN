@@ -75,7 +75,7 @@ class Solver(object):
     def build_model(self):
         """Create a generator and a discriminator."""
         if self.dataset in ['CelebA', 'RaFD']:
-            """model的生成器的结构也要改,参照DRIT"""
+            
             self.G = Generator(self.g_conv_dim, self.c_dim, self.g_repeat_num, self.nz)
             # self.G = Generator(self.g_conv_dim, self.c_dim, self.g_repeat_num)
             self.D = Discriminator(self.image_size, self.d_conv_dim, self.c_dim, self.d_repeat_num)
@@ -211,16 +211,14 @@ class Solver(object):
         elif dataset == 'RaFD':
             return F.cross_entropy(logit, target)
 
-    """cq change"""
+    
 
     def get_z_random(self, batchSize: object, nz: object, random_type: object = 'gauss') -> object:
         """***"""
         z = torch.cuda.FloatTensor(batchSize, nz)
         z.copy_(torch.randn(batchSize, nz))
         return z
-        # 这里返回的这个z是什么?
-        # print("这是Z的值:")
-        #print(z)
+        
 
 
     def test_forward(self, image, a2b=True):
@@ -233,7 +231,7 @@ class Solver(object):
             output = self.gen.forward_a(self.z_content, self.z_random)
         return output
 
-    """end"""
+   
 
     def train(self):
         """Train StarGAN within a single dataset."""
@@ -336,11 +334,11 @@ class Solver(object):
             # =================================================================================== #
             #                               3. Train the generator                                #
             # =================================================================================== #
-            """cq change"""
+            
 
             if (i + 1) % self.n_critic == 0:
                 # Original-to-target domain.
-                """生成图片中要加上z_random,还未修改"""
+                
                 x_fake = self.G(x_real, c_trg)
                 print("x_realsize",x_real.size(0))
                 print("x_fakesize",x_fake.size(0))
