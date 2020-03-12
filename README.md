@@ -22,3 +22,6 @@ python main.py
 # test MS-StarGAN
 change the code : parser.add_argument('--mode', type=str, default='test', choices=['train', 'test']) ，
 and select your trained model ：parser.add_argument('--model_save_dir', type=str, default='')
+
+python main.py
+
